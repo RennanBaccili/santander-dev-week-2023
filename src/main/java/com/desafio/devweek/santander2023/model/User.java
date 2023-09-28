@@ -2,14 +2,37 @@ package com.desafio.devweek.santander2023.model;
 
 import java.util.List;
 
-public class User {
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 
+@Entity(name="tb_user")
+public class User {
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	
 	private String name;
+	
+	//NÃO EXISTE USUARIO SEM CONTA, Se apagar a conta o usuario é apagado junto
+	@OneToOne(cascade = CascadeType.ALL) 
 	private Accont account;
+	
+	@OneToOne(cascade = CascadeType.ALL) 
 	private Card card;
+	
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER) 
 	private List<Feature> features;
+	
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER) 
 	private List<News> news;
+	
 	public Long getId() {
 		return id;
 	}

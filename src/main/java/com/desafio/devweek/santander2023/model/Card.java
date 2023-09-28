@@ -2,11 +2,25 @@ package com.desafio.devweek.santander2023.model;
 
 import java.math.BigDecimal;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+
+@Entity(name="tb_card")
 public class Card {
 	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	String number;
-	BigDecimal limit;
+	
+	@Column(unique=true)
+	private String number;
+	
+	@Column(name="available_limit",scale = 13,precision = 2)
+	private BigDecimal limit;
+	
 	public String getNumber() {
 		return number;
 	}
