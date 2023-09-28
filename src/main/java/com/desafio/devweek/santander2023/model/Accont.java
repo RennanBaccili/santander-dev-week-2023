@@ -21,10 +21,10 @@ public class Accont {
 	private String agency;
 	
 	// 13 numeros inteiros e 2 decimais
-	@Column(scale = 13, precision = 2)
+	@Column(precision = 13, scale = 2)
 	private BigDecimal balance;
 	
-	@Column(name="additional_limit" ,scale = 13, precision = 2)
+	@Column(name="additional_limit" ,precision = 13, scale = 2)
 	private BigDecimal limit;
 	
 	public String getBigDecimal() {
